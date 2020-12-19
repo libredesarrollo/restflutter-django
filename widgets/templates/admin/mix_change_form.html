@@ -1,0 +1,52 @@
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+
+{% if object_id %}
+
+
+<fieldset class="aligned module">
+
+    <legend>Mix</legend>
+
+    <div class="form-row">
+        <label for="orden" class="required">Orden</label>
+        <input type="number" name="orden" id="orden">
+    </div>
+
+    <div class="form-row">
+
+        <label for="widget" class="required">Widgets</label>
+
+        <select name="widget" id="widget">
+
+            <optgroup label="Botón">
+                {% for b in buttons %}
+                <option value="button_{{ b.id }}">{{ b.label }}</option>
+                {% endfor %}
+            </optgroup>
+            <optgroup label="Chip">
+                {% for c in chips %}
+                <option value="chip_{{ c.id }}">{{ c.label }}</option>
+                {% endfor %}
+            </optgroup>
+            <optgroup label="Imagen">
+                {% for i in images %}
+                <option value="image_{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+            </optgroup>
+            <optgroup label="Texto">
+                {% for t in texts %}
+                <option value="text_{{ t.id }}">{{ t.text }}</option>
+                {% endfor %}
+            </optgroup>
+
+        </select>
+
+    </div>
+</fieldset>
+{% endif %}
+
+{{ block.super }}
+
+{% endblock %}

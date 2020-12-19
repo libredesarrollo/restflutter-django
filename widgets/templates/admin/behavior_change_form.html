@@ -1,0 +1,39 @@
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+
+{% if object_id %}
+
+<fieldset class="aligned module">
+
+    <legend>Behavior</legend>
+
+    <div class="form-row">
+        <label for="content_1" class="required">Contenido 1</label>
+        <input type="text" value="{{content_1}}" name="content_1" id="content_1">
+    </div>
+
+    <div class="form-row">
+        <label for="content_2" value="{{content_2}}" class="required">Contenido 2</label>
+        <input type="text" name="content_2" id="content_2">
+    </div>
+
+    <div class="form-row">
+
+        <label for="behavioral_model" class="required">Tipo</label>
+
+        <select name="behavioral_model" id="behavioral_model">
+
+          <option value="url">Url</option>
+          <option {% if behavioral_model == "resource" %} selected {% endif %} value="resource">Resource</option>
+          <option {% if behavioral_model == "content" %} selected {% endif %} value="content">Content</option>
+
+        </select>
+
+    </div>
+</fieldset>
+{% endif %}
+
+{{ block.super }}
+
+{% endblock %}
